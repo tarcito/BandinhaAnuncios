@@ -22,10 +22,10 @@ public class Anuncio {
     private List<String> formaDeContato;
 
 
-    private Anuncio(){
+    public Anuncio(){
     }
 
-    public Anuncio(String titulo, String descricao, String cidade, String bairro, List<String> instrumentos, List<String> estilosQGosta, List<String> estilosQNaoGosta, String objetivo, List<String> formaDeContato){
+    public Anuncio(String titulo, String descricao, String cidade, String bairro, List<String> instrumentos, List<String> estilosQGosta, List<String> estilosQNaoGosta, String objetivo, List<String> formaDeContato) throws Exception {
         setTitulo(titulo);
         setDescrição(descricao);
         setCidade(cidade);
@@ -40,7 +40,14 @@ public class Anuncio {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
+    public void setTitulo(String titulo) throws Exception {
+        if(titulo==null){
+            throw new Exception("Titulo nulo!");
+        }
+      if (titulo.isEmpty()){
+          throw new Exception("Titulo vazio!");
+      }
+
         this.titulo = titulo;
     }
 
@@ -48,7 +55,13 @@ public class Anuncio {
         return descrição;
     }
 
-    public void setDescrição(String descrição) {
+    public void setDescrição(String descrição) throws Exception {
+        if(descrição == null){
+            throw new Exception("Descrição nula!");
+        }
+        if (descrição.isEmpty()){
+            throw new Exception("Descrição vazia!");
+        }
         this.descrição = descrição;
     }
 
@@ -56,7 +69,13 @@ public class Anuncio {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(String cidade)throws Exception{
+        if(cidade == null){
+            throw new Exception("Cidade nula!");
+        }
+        if (cidade.isEmpty()){
+            throw new Exception("Cidade vazia!");
+        }
         this.cidade = cidade;
     }
 
@@ -64,7 +83,13 @@ public class Anuncio {
         return bairro;
     }
 
-    public void setBairro(String bairro) {
+    public void setBairro(String bairro)throws Exception {
+        if(bairro == null){
+            throw new Exception("Bairro nulo!");
+        }
+        if (bairro.isEmpty()){
+            throw new Exception("Bairro vazio!");
+        }
         this.bairro = bairro;
     }
 
@@ -72,7 +97,13 @@ public class Anuncio {
         return objetivo;
     }
 
-    public void setObjetivo(String objetivo) {
+    public void setObjetivo(String objetivo)throws Exception {
+        if(objetivo == null){
+            throw new Exception("Objetivo nulo!");
+        }
+        if (objetivo.isEmpty()){
+            throw new Exception("Objetivo vazio!");
+        }
         this.objetivo = objetivo;
     }
 
@@ -80,7 +111,10 @@ public class Anuncio {
         return instrumentos;
     }
 
-    public void setInstrumentos(List<String> instrumentos) {
+    public void setInstrumentos(List<String> instrumentos) throws Exception {
+        if(instrumentos.isEmpty()){
+            throw new Exception("Lista dos instrumentos vazia!");
+        }
         this.instrumentos = instrumentos;
     }
 
@@ -104,8 +138,19 @@ public class Anuncio {
         return formaDeContato;
     }
 
-    public void setFormaDeContato(List<String> formaDeContato) {
+    public void setFormaDeContato(List<String> formaDeContato) throws Exception {
+        if(formaDeContato.isEmpty()){
+            throw new Exception("Lista das formas de contato vazia!");
+        }
+
         this.formaDeContato = formaDeContato;
     }
 
+    public void setId(long id){
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
+    }
 }
