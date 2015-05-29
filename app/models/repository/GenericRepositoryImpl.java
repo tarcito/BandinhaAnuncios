@@ -12,10 +12,10 @@ package models.repository;
         import play.db.jpa.JPA;
 
 /**
- * Camada genÈrica para acesso ao Banco de Dados
+ * Camada gen√©rica para acesso ao Banco de Dados
  */
 public abstract class GenericRepositoryImpl<Entidade> {
-    // Resultados por p·gina
+    // Resultados por p√°gina
     public static final int DEFAULT_RESULTS = 50;
 
     private Class<Entidade> clazz;
@@ -32,7 +32,7 @@ public abstract class GenericRepositoryImpl<Entidade> {
     }
 
     /**
-     * Espelha o estado do DAO com o banco de Dados, deve ser feito apÛs um
+     * Espelha o estado do DAO com o banco de Dados, deve ser feito ap√≥s um
      * persist, ou merge.
      */
     public void flush() {
@@ -40,7 +40,7 @@ public abstract class GenericRepositoryImpl<Entidade> {
     }
 
     /**
-     * Atualiza a informaÁ„o da entidade do cÛdigo com a do banco de dados.
+     * Atualiza a informa√ß√£o da entidade do c√≥digo com a do banco de dados.
      */
     public void merge(Entidade e) {
         getEm().merge(e);
@@ -97,7 +97,7 @@ public abstract class GenericRepositoryImpl<Entidade> {
     }
 
     /**
-     * Retorna quantas entidades da {@code clazz} est„o no banco de dados
+     * Retorna quantas entidades da {@code clazz} est√£o no banco de dados
      */
     public Long countAll() {
         // Total de entidades

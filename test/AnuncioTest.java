@@ -17,7 +17,7 @@ public class AnuncioTest {
 
     Anuncio anuncio;
 
-    String titulo, descrição, cidade, bairro;
+    String titulo, descriÃ§Ã£o, cidade, bairro;
     boolean objetivo;
     List<String> instrumentos = new ArrayList<String>();
     List<String> estilosQGosta = new ArrayList<String>();
@@ -33,15 +33,15 @@ public class AnuncioTest {
 
     public void devePermitirCriarAnuncio() throws Exception{
 
-        titulo = "banda de jazz"; descrição= "quero encontrar companheiros músicos para formar uma banda de rock";
-        cidade = "joão pessoa"; bairro = "manaira"; objetivo = true;
-        instrumentos.add("guitarra");instrumentos.add("violão");instrumentos.add("baixo");
+        titulo = "banda de jazz"; descriÃ§Ã£o= "quero encontrar companheiros mÃºsicos para formar uma banda de rock";
+        cidade = "joÃ£o pessoa"; bairro = "manaira"; objetivo = true;
+        instrumentos.add("guitarra");instrumentos.add("violÃ£o");instrumentos.add("baixo");
         estilosQGosta.add("jazz"); instrumentos.add("rock");instrumentos.add("pop");
         estilosQNaoGosta.add("funk"); estilosQNaoGosta.add("rap"); estilosQNaoGosta.add("tecnoMelody");
         formaDeContato.add("franciscopinto@gmail.com");formaDeContato.add("facebook.com/francisco23");
         try {
             anuncio.setTitulo(titulo);
-            anuncio.setDescrição(descrição);
+            anuncio.setDescricao(descriÃ§Ã£o);
             anuncio.setBairro(bairro);
             anuncio.setCidade(cidade);
             anuncio.setInstrumentos(instrumentos);
@@ -54,7 +54,7 @@ public class AnuncioTest {
             e.printStackTrace();
         }
         assertThat(anuncio.getTitulo()).isEqualTo(titulo);
-        assertThat(anuncio.getDescrição()).isEqualTo(descrição);
+        assertThat(anuncio.getDescricao()).isEqualTo(descriÃ§Ã£o);
         assertThat(anuncio.getCidade()).isEqualTo(cidade);
         assertThat(anuncio.getBairro()).isEqualTo(bairro);
         assertThat(anuncio.getInstrumentos()).isEqualTo(instrumentos);
@@ -90,15 +90,15 @@ public class AnuncioTest {
     @Test
     public void naoDevePermitirDescricaoVaziaOuNula(){
         try {
-            anuncio.setDescrição("");
+            anuncio.setDescricao("");
         } catch (Exception e) {
-            Assert.assertEquals("Descrição vazia!", e.getMessage());
+            Assert.assertEquals("Descricao vazia!", e.getMessage());
         }
 
         try {
-            anuncio.setDescrição(null);
+            anuncio.setDescricao(null);
         } catch (Exception e) {
-            Assert.assertEquals("Descriçao nula!", e.getMessage());
+            Assert.assertEquals("Descricao nula!", e.getMessage());
         }
 
     }
@@ -142,7 +142,7 @@ public class AnuncioTest {
         }
 
         try {
-            anuncio.setBairro(null);
+            anuncio.setInstrumentos(null);
         } catch (Exception e) {
             Assert.assertEquals("Lista dos instrumentos nula!", e.getMessage());
         }

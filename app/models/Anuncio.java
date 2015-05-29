@@ -1,8 +1,5 @@
 package models;
 
-import org.hibernate.jdbc.Expectation;
-import play.api.PlayException;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +15,7 @@ public class Anuncio implements Comparable<Anuncio> {
     @GeneratedValue
     private long id;
 
-    private String titulo, descrição, cidade, bairro;
+    private String titulo, descricao, cidade, bairro;
     boolean objetivo = false; //true: procura uma banda;  false: tocar ocasionalmente
     private List<String> instrumentos;
     private List<String> estilosQGosta;
@@ -31,7 +28,7 @@ public class Anuncio implements Comparable<Anuncio> {
 
     public Anuncio(String titulo, String descricao, String cidade, String bairro, List<String> instrumentos, List<String> estilosQGosta, List<String> estilosQNaoGosta,boolean objetivo, List<String> formaDeContato) throws Exception {
         setTitulo(titulo);
-        setDescrição(descricao);
+        setDescricao(descricao);
         setCidade(cidade);
         setBairro(bairro);
         setEstilosQGosta(estilosQGosta);
@@ -64,18 +61,18 @@ public class Anuncio implements Comparable<Anuncio> {
         this.titulo = titulo;
     }
 
-    public String getDescrição() {
-        return descrição;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescrição(String descrição) throws Exception {
-        if(descrição == null){
-            throw new Exception("Descrição nula!");
+    public void setDescricao(String descricao) throws Exception {
+        if(descricao == null){
+            throw new Exception("Descricao nula!");
         }
-        if (descrição.isEmpty()){
-            throw new Exception("Descrição vazia!");
+        if (descricao.isEmpty()){
+            throw new Exception("Descricao vazia!");
         }
-        this.descrição = descrição;
+        this.descricao = descricao;
     }
 
     public String getCidade() {

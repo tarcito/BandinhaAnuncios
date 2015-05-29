@@ -13,7 +13,7 @@ public class AnuncioRepository extends  GenericRepositoryImpl<Anuncio> {
         super(Anuncio.class);
     }
     /**
-     * Retorna a única instância do repositório de anuncios
+     * Retorna a Ãºnica instÃ¢ncia do repositÃ³rio de anuncios
      */
     public static AnuncioRepository getInstance(){
         if(instance == null){
