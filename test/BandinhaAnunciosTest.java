@@ -22,9 +22,10 @@ public class BandinhaAnunciosTest {
 
     @Test
     public void deveAdicionarAnuncios() throws Exception {
-        String titulo, descrição, cidade, bairro, objetivo;
+        String titulo, descrição, cidade, bairro;
         titulo = "banda de jazz"; descrição= "quero encontrar músicos para formar uma banda de jazz";
-        cidade = "joão pessoa"; bairro = "manaira"; objetivo = "procurar uma banda";
+        cidade = "joão pessoa"; bairro = "manaira";
+        boolean  objetivo = true;
 
         List<String> instrumentos = new ArrayList<String>();
         List<String> estilosQGosta = new ArrayList<String>();
@@ -34,7 +35,7 @@ public class BandinhaAnunciosTest {
         instrumentos.add("flauta");instrumentos.add("trombone");instrumentos.add("trompete");
         estilosQGosta.add("jazz"); instrumentos.add("rock");instrumentos.add("pop");
         estilosQNaoGosta.add("funk"); estilosQNaoGosta.add("rap"); estilosQNaoGosta.add("tecnoMelody");
-        formaDeContato.add("franciscopinto@gmail.com");formaDeContato.add("facebook.com/francisco23")
+        formaDeContato.add("franciscopinto@gmail.com");formaDeContato.add("facebook.com/francisco23");
         clasificado.adicionaAnuncio(titulo, descrição, cidade, bairro, instrumentos, estilosQGosta, estilosQNaoGosta, objetivo, formaDeContato);
 
         assertThat(classificado.getAnuncios().contains("titulo"));

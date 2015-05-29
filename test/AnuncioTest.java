@@ -17,8 +17,8 @@ public class AnuncioTest {
 
     Anuncio anuncio;
 
-    String titulo, descrição, cidade, bairro, objetivo;
-
+    String titulo, descrição, cidade, bairro;
+    boolean objetivo;
     List<String> instrumentos = new ArrayList<String>();
     List<String> estilosQGosta = new ArrayList<String>();
     List<String> estilosQNaoGosta = new ArrayList<String>();
@@ -34,7 +34,7 @@ public class AnuncioTest {
     public void devePermitirCriarAnuncio() throws Exception{
 
         titulo = "banda de jazz"; descrição= "quero encontrar companheiros músicos para formar uma banda de rock";
-        cidade = "joão pessoa"; bairro = "manaira"; objetivo = "procurar uma banda";
+        cidade = "joão pessoa"; bairro = "manaira"; objetivo = true;
         instrumentos.add("guitarra");instrumentos.add("violão");instrumentos.add("baixo");
         estilosQGosta.add("jazz"); instrumentos.add("rock");instrumentos.add("pop");
         estilosQNaoGosta.add("funk"); estilosQNaoGosta.add("rap"); estilosQNaoGosta.add("tecnoMelody");
@@ -61,7 +61,15 @@ public class AnuncioTest {
         assertThat(anuncio.getEstilosQGosta()).isEqualTo(estilosQGosta);
         assertThat(anuncio.getEstilosQNaoGosta()).isEqualTo(estilosQNaoGosta);
         assertThat(anuncio.getFormaDeContato()).isEqualTo(formaDeContato);
+        assertThat(anuncio.getObjetivo()).isEqualTo("Formar Uma Banda");
+    }
 
+    @Test
+    public void deveRetornarObjetivoCorreto(){
+        anuncio.setObjetivo(true);
+        assertThat(anuncio.getObjetivo()).isEqualTo("Formar Uma Banda");;
+        anuncio.setObjetivo(false);
+        assertThat(anuncio.getObjetivo()).isEqualTo("Tocar Ocasionalmente");;
     }
 
     @Test
@@ -76,7 +84,67 @@ public class AnuncioTest {
             anuncio.setTitulo(null);
         } catch (Exception e) {
             Assert.assertEquals("Titulo nulo!", e.getMessage());
+        }
+    }
 
+    @Test
+    public void naoDevePermitirDescricaoVaziaOuNula(){
+        try {
+            anuncio.setDescrição("");
+        } catch (Exception e) {
+            Assert.assertEquals("Descrição vazia!", e.getMessage());
+        }
+
+        try {
+            anuncio.setDescrição(null);
+        } catch (Exception e) {
+            Assert.assertEquals("Descriçao nula!", e.getMessage());
+        }
+
+    }
+
+    @Test
+    public void naoDevePermitirCidadeVaziaOuNula(){
+        try {
+            anuncio.setCidade("");
+        } catch (Exception e) {
+            Assert.assertEquals("Cidade vazia!", e.getMessage());
+        }
+
+        try {
+            anuncio.setCidade(null);
+        } catch (Exception e) {
+            Assert.assertEquals("Cidade nula!", e.getMessage());
+        }
+    }
+
+    @Test
+    public void naoDevePermitirBairroVazioOuNulo(){
+        try {
+            anuncio.setBairro("");
+        } catch (Exception e) {
+            Assert.assertEquals("Bairro vazio!", e.getMessage());
+        }
+
+        try {
+            anuncio.setBairro(null);
+        } catch (Exception e) {
+            Assert.assertEquals("Bairro nulo!", e.getMessage());
+        }
+    }
+
+    @Test
+    public void naoDevePermitirInstrumentosVazioOuNulo(){
+        try {
+            anuncio.setInstrumentos(new ArrayList<String>());
+        } catch (Exception e) {
+            Assert.assertEquals("Lista dos instrumentos vazia!", e.getMessage());
+        }
+
+        try {
+            anuncio.setBairro(null);
+        } catch (Exception e) {
+            Assert.assertEquals("Lista dos instrumentos nula!", e.getMessage());
         }
     }
 

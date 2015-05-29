@@ -1,5 +1,8 @@
 package models;
 
+import org.hibernate.jdbc.Expectation;
+import play.api.PlayException;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,13 +12,14 @@ import java.util.List;
  * Created by Tarcito on 25/05/2015.
  */
 @Entity
-public class Anuncio {
+public class Anuncio implements Comparable<Anuncio> {
 
     @Id
     @GeneratedValue
     private long id;
 
-    private String titulo, descrição, cidade, bairro, objetivo;
+    private String titulo, descrição, cidade, bairro;
+    boolean objetivo = false; //true: procura uma banda;  false: tocar ocasionalmente
     private List<String> instrumentos;
     private List<String> estilosQGosta;
     private List<String> estilosQNaoGosta;
@@ -25,7 +29,7 @@ public class Anuncio {
     public Anuncio(){
     }
 
-    public Anuncio(String titulo, String descricao, String cidade, String bairro, List<String> instrumentos, List<String> estilosQGosta, List<String> estilosQNaoGosta, String objetivo, List<String> formaDeContato) throws Exception {
+    public Anuncio(String titulo, String descricao, String cidade, String bairro, List<String> instrumentos, List<String> estilosQGosta, List<String> estilosQNaoGosta,boolean objetivo, List<String> formaDeContato) throws Exception {
         setTitulo(titulo);
         setDescrição(descricao);
         setCidade(cidade);
@@ -35,6 +39,15 @@ public class Anuncio {
         setObjetivo(objetivo);
         setFormaDeContato(formaDeContato);
     }
+
+    public void setId(long id){
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
+    }
+
 
     public String getTitulo() {
         return titulo;
@@ -94,16 +107,13 @@ public class Anuncio {
     }
 
     public String getObjetivo() {
-        return objetivo;
+        if(objetivo){
+            return "Formar Uma Banda";
+        }
+        return "Tocar Ocasionalmente";
     }
 
-    public void setObjetivo(String objetivo)throws Exception {
-        if(objetivo == null){
-            throw new Exception("Objetivo nulo!");
-        }
-        if (objetivo.isEmpty()){
-            throw new Exception("Objetivo vazio!");
-        }
+    public void setObjetivo(boolean objetivo){
         this.objetivo = objetivo;
     }
 
@@ -112,6 +122,9 @@ public class Anuncio {
     }
 
     public void setInstrumentos(List<String> instrumentos) throws Exception {
+        if(instrumentos == null){
+            throw new Exception("Lista dos instrumentos nula!");
+        }
         if(instrumentos.isEmpty()){
             throw new Exception("Lista dos instrumentos vazia!");
         }
@@ -146,11 +159,9 @@ public class Anuncio {
         this.formaDeContato = formaDeContato;
     }
 
-    public void setId(long id){
-        this.id = id;
-    }
-
-    public long getId() {
-        return id;
+    @Override
+    public int compareTo(Anuncio outroAnuncio) {
+    //Todo compareTo para segunda estoria de usuario
+        return 0;
     }
 }

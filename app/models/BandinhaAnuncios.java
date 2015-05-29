@@ -17,7 +17,7 @@ public class BandinhaAnuncios {
    }
 
     @Transactional
-    public void adicionaAnuncio(String titulo, String descricao, String cidade, String bairro, List<String> instrumentos, List<String> estilosQGosta, List<String> estilosQNaoGosta, String objetivo, List<String> formaDeContato) throws Exception {
+    public void adicionaAnuncio(String titulo, String descricao, String cidade, String bairro, List<String> instrumentos, List<String> estilosQGosta, List<String> estilosQNaoGosta, boolean objetivo, List<String> formaDeContato) throws Exception {
         Anuncio novoAnuncio = new Anuncio(titulo, descricao, cidade, bairro, instrumentos, estilosQGosta, estilosQNaoGosta, objetivo, formaDeContato);
 
     }
