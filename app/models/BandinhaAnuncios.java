@@ -3,7 +3,7 @@ package models;
 import models.repository.AnuncioRepository;
 import play.db.jpa.Transactional;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Tarcito on 25/05/2015.
@@ -23,11 +23,20 @@ public class BandinhaAnuncios {
         repositorioAnuncios.flush();
     }
 
-    
-
     @Transactional
     public List<Anuncio> getAnuncios(){
-        return  repositorioAnuncios.findAll();
+        return repositorioAnuncios.findAll();
+    }
+
+    @Transactional
+    public List<String> getAnunciosToString(){
+        List<String> listaResposta = new ArrayList<String>();
+        List<Anuncio> listaDosAnuncios = getAnuncios();
+        Collections.sort(listaDosAnuncios);
+        for (Anuncio  anuncio: listaDosAnuncios){
+            listaResposta.add(anuncio.toString());
+        }
+        return  listaResposta;
     }
 
     @Transactional

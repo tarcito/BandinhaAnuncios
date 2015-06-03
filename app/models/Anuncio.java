@@ -156,9 +156,34 @@ public class Anuncio implements Comparable<Anuncio> {
         this.formaDeContato = formaDeContato;
     }
 
+    public String toString(){
+        String anuncio = getTitulo() + ";" + getDescricao() + ";" + getObjetivo() + ";" +
+                getCidade() + " - "+ getBairro() + ";" +  getInstrumentos() + ";" +
+                getEstilosQGosta() + ";" + getEstilosQNaoGosta() + ";" +
+                getFormaDeContato();
+        return anuncio;
+    }
+
     @Override
     public int compareTo(Anuncio outroAnuncio) {
-    //Todo compareTo para segunda estoria de usuario
+        if(getId() > outroAnuncio.getId()){
+            return 1;
+        }else if(getId()<outroAnuncio.getId()){
+            return -1;
+        }
         return 0;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if (!(obj instanceof Anuncio)){
+            return false;
+        }
+        Anuncio outroAnuncio = (Anuncio) obj;
+        if (outroAnuncio.getId() == getId()){
+            return true;
+        }
+        return false;
+    }
+
 }

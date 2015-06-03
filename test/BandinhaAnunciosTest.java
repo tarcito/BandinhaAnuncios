@@ -38,7 +38,7 @@ public class BandinhaAnunciosTest {
         formaDeContato.add("franciscopinto@gmail.com");formaDeContato.add("facebook.com/francisco23");
         clasificado.adicionaAnuncio(titulo, descrição, cidade, bairro, instrumentos, estilosQGosta, estilosQNaoGosta, objetivo, formaDeContato);
 
-       // assertThat(classificado.getAnuncios().contains("titulo"));
+       // assertThat(classificado.getAnunciosToString.contains("titulo"));
 
     }
 
