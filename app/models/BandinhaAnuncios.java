@@ -29,7 +29,7 @@ public class BandinhaAnuncios {
     }
 
     @Transactional
-    public List<String> getAnunciosToString(){
+    public List<String> getAnunciosToListOfString(){
         List<String> listaResposta = new ArrayList<String>();
         List<Anuncio> listaDosAnuncios = getAnuncios();
         Collections.sort(listaDosAnuncios);

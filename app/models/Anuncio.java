@@ -31,6 +31,7 @@ public class Anuncio implements Comparable<Anuncio> {
         setDescricao(descricao);
         setCidade(cidade);
         setBairro(bairro);
+        setInstrumentos(instrumentos);
         setEstilosQGosta(estilosQGosta);
         setEstilosQNaoGosta(estilosQNaoGosta);
         setObjetivo(objetivo);
